@@ -1,0 +1,14 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <div class="fs-5">
+      Please check
+      <%= pluralize(resource.errors.count, "error")%>
+      found!
+    </div>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

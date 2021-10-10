@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin_account = User.where(email: "admin@email.com").first_or_initialize
+if admin_account.new_record?
+  admin_account.password = "kcknmb"
+  admin_account.password_confirmation = "kcknmb"
+  admin_account.role = User.roles[:admin]
+  admin_account.save
+  puts "Admin account created!"
+else
+  puts "Admin account already exists!"
+end

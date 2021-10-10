@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <div class="display-4">
+    Welcome, <%= current_user.email.split('@').first %>!
+  </div>
+<% else %>
+  <div class="display-4">
+    Welcome to Tribe:Calc!
+  </div>
+<% end %>
+<p>Find me in app/views/home/index.html.erb</p>

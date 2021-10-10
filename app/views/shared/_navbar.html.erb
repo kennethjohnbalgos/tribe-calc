@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5" aria-label="Tribe:Calc Navigation">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to 'Tribe:Calc', root_path, class: "nav-link #{'active' if main_page_active?}" %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "nav-link text-danger" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Login', new_user_session_path, class: "nav-link #{'active' unless main_page_active?}" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
