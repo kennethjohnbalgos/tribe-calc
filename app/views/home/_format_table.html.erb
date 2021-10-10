@@ -1,0 +1,31 @@
+<table class="table table-hover table-bordered mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Submission Format</th>
+      <th scope="col">Format Code</th>
+      <th scope="col">Bundle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Format.all.each do |format| %>
+      <tr>
+        <td class="align-middle">
+          <%= format.name %>
+        </td>
+        <td class="align-middle">
+          <%= format.code %>
+        </td>
+        <td>
+          <% format.format_bundles.each_with_index do |bundle, index| %>
+            <% if index != 0 %>
+              <br/>
+            <% end %>
+            <%= bundle.quantity %>
+            @
+            <%= number_to_currency(bundle.price) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
