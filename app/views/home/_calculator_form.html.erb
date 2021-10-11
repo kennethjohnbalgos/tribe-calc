@@ -10,8 +10,19 @@
   </div>
 <% end %>
 <% if @input.present? %>
-  <div class="fs-4 mt-5 text-center">
+  <div class="fs-4 mt-5">
     Result:
-    <%= @results %>
+    <br/>
+    <% @results.each do |code, data| %>
+      <%= "#{data[:value]} #{code} $#{'%.2f' % data[:total]}" %>
+      <% data[:output].each do |output| %>
+        <% if output.is_a?(String) %>
+          <li><%= "#{output}" %></li>
+        <% else %>
+          <li><%= "#{output[:quantity]} x #{output[:bundle]} - $#{'%.2f' % (output[:price] * output[:quantity])}" %></li>
+        <% end %>
+      <% end %>
+      <br/>
+    <% end %>
   </div>
 <% end %>
