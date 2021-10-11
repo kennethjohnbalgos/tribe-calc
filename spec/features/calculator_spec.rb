@@ -14,9 +14,9 @@ describe "Calculator", type: :feature do
 
   scenario "visitor can see the calculator field" do
     visit root_path
-
-    expect(page).to have_css('.calc-input') # Calc input is visible
-    expect(page).to have_css('calc-btn') # Calc field is visible
+    
+    expect(page).to have_field 'calc_value' # Calc input is visible
+    expect(page).to have_button "Calculate" # Calc field is visible
   end
 
   scenario "visitor can use the calculator field" do
