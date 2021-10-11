@@ -40,6 +40,7 @@ end
 RSpec.configure do |config|
   # Load custom helper
   config.include SessionHelper, type: :system
+  config.include CalcHelper, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
 
