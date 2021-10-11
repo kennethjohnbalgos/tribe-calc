@@ -16,7 +16,7 @@
           <%= format.code %>
         </td>
         <td>
-          <% format.format_bundles.each_with_index do |bundle, index| %>
+          <% format.format_bundles.sort_quantity.each_with_index do |bundle, index| %>
             <% if index != 0 %>
               <br/>
             <% end %>
