@@ -52,4 +52,11 @@ describe "Calculator", type: :feature do
     expect(page).to have_no_text "VID -" # VID output is not displayed
   end
 
+  scenario "visitor can see the hint and example" do
+    calculate("25 img")
+
+    expect(page).to have_text "Hint:" # Hint should be visible
+    expect(page).to have_text "Example:" # Example should be visibles
+  end
+
 end

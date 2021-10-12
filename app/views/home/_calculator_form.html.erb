@@ -4,6 +4,11 @@
     <div class="input-group input-group-lg">
       <%= f.text_field :value, value: @input, class: "form-control text-center", autocomplete: false %>
     </div>
+    <div id="valueHelp" class="form-text">
+      Hint: Enter the quantity followed by the format code.
+      <br/>
+      Example: "10 IMG 15 FLAC 20 VID"
+    </div>
     <div class="buttons text-center mt-3">
       <%= f.submit "Calculate", class: "btn btn-lg btn-success" %>
     </div>
