@@ -2,27 +2,10 @@
 <%= form_for :calc, url: root_path, method: 'get' do |f| %>
   <div class="col-sm-8 m-auto">
     <div class="input-group input-group-lg">
-      <%= f.text_field :value, value: @input, class: "form-control text-center" %>
+      <%= f.text_field :value, value: @input, class: "form-control text-center", autocomplete: false %>
     </div>
     <div class="buttons text-center mt-3">
       <%= f.submit "Calculate", class: "btn btn-lg btn-success" %>
     </div>
-  </div>
-<% end %>
-<% if @input.present? %>
-  <div class="fs-4 mt-5">
-    Result:
-    <br/>
-    <% @results.each do |code, data| %>
-      <%= "#{data[:value]} #{code} $#{'%.2f' % data[:total]}" %>
-      <% data[:output].each do |output| %>
-        <% if output.is_a?(String) %>
-          <li><%= "#{output}" %></li>
-        <% else %>
-          <li><%= "#{output[:quantity]} x #{output[:bundle]} - $#{'%.2f' % (output[:price] * output[:quantity])}" %></li>
-        <% end %>
-      <% end %>
-      <br/>
-    <% end %>
   </div>
 <% end %>

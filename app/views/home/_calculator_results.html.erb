@@ -1,0 +1,23 @@
+<% if @input.present? %>
+  <div class="mt-5">
+    <div class="fs-3 mt-5 mb-1">Results:</div>
+    <div class="row">
+      <% @results.each do |code, data| %>
+        <div class="col-sm-6 col-lg-4 mb-3">
+          <div class="fs-5 fw-bold"><%= "#{data[:value]} #{code} - #{number_to_currency(data[:total])}" %></div>
+          <div class="fs-6">
+            <% data[:output].each do |output| %>
+              <% if output.is_a?(String) %>
+                <li><%= "#{output}" %></li>
+              <% else %>
+                <% if output[:quantity] > 0 %>
+                  <li><%= "#{output[:quantity]} x #{output[:bundle]} - #{number_to_currency(output[:price] * output[:quantity])}" %></li>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
