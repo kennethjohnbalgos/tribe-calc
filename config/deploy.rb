@@ -31,3 +31,14 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "public/uploads"
 
 set :rvm_type,          :user  
 set :rvm_ruby_version, 'ruby-2.6.3'
+
+namespace :deploy do
+  desc "reload the database with seed data"
+  task :seed do
+    on roles(:all) do
+      within current_path do
+        execute :bundle, :exec, 'rails', 'db:seed', 'RAILS_ENV=production'
+      end
+    end
+  end
+end
