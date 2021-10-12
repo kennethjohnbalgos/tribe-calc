@@ -50,6 +50,12 @@ group :development do
   gem 'spring'
   # Open sent emails in browser instead of actually sending it
   gem 'letter_opener'
+  # Capistrano for deployment
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :test do
