@@ -15,11 +15,11 @@ RSpec.describe Format, type: :model do
   end
 
   it "is valid to have multiple bundles" do
-    @bundle.quantity = Faker::Number.number(digits: 1)
+    @other_bundle = create :format_bundle, format: @format
+
+    @bundle.quantity = @other_bundle.quantity + 1
     @bundle.price = Faker::Number.decimal(l_digits: 2)
     @bundle.save
-
-    create :format_bundle, format: @format
     
     expect(@format.format_bundles.count).to eq(2)
   end
