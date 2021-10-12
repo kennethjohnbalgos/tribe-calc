@@ -35,4 +35,21 @@ describe "Calculator", type: :feature do
     expect(page).to have_text "15 VID - $2,670.00" # VID is displayed
   end
 
+  scenario "visitor can see invalid combination error" do
+    calculate("16 img")
+
+    expect(page).to have_text "16 IMG" # IMG output is displayed
+    expect(page).to have_text "No bundle combination found." # Error is displayed
+  end
+
+  scenario "visitor can order just one format" do
+    calculate("25 img")
+
+    expect(page).to have_text "25 IMG - $2,050.00" # IMG output is displayed
+    expect(page).to have_text "2 x 10" # Correct result is displayed
+    expect(page).to have_text "1 x 5" # Correct result is displayed
+    expect(page).to have_no_text "FLAC -" # FLAC output is not displayed
+    expect(page).to have_no_text "VID -" # VID output is not displayed
+  end
+
 end

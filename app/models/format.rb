@@ -17,11 +17,19 @@ class Format < ApplicationRecord
       results[code] = {}
       # Set the input value
       results[code][:value] = value
-      # Set the calculated bundle quantity combination Hash as output
-      results[code][:output] = calculate(code, value)
-      # Set the total price based on the calculated output
-      prices = results[code][:output].collect{|x| (x[:price] * x[:quantity]) if x.is_a?(Hash)}
-      results[code][:total] = prices.compact.sum
+
+      # If the computation is a valid output
+      if (output = calculate(code, value)).is_a?(Array)
+        # Set the calculated bundle quantity combination Hash as output
+        results[code][:output] = output
+
+        # Set the total price based on the calculated output
+        prices = results[code][:output].collect{|x| (x[:price] * x[:quantity]) if x.is_a?(Hash)}
+        results[code][:total] = prices.compact.sum
+      else
+        # Set the error message based on the calculated output
+        results[code][:error] = output
+      end
     end
 
     return results
@@ -143,7 +151,7 @@ class Format < ApplicationRecord
       # If there's still a remaining value after the main loop
       if value > 0
         # Notify that the input has a remainder in any bundle quantity combination
-        results << "Invalid #{code} value, remainder is #{value}."
+        results << "No bundle combination found."
         # Remove the highest quantity for the next outer loop
         bundles = bundles.drop(1)
       else
@@ -151,7 +159,14 @@ class Format < ApplicationRecord
         return results
       end
     end
-    # If all combination has a remainder, return the collected results with notice
-    return results
+
+    # If all combination has a remainder and the results has an error
+    if (error_index = results.map{|x| x.class}.index(String)).present?
+      # Return the error message from the array
+      return results[error_index]
+    else  
+      # If there's no error found, return the complete results
+      return results
+    end
   end
 end
