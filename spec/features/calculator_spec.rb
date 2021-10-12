@@ -27,4 +27,12 @@ describe "Calculator", type: :feature do
     expect(page).to have_text "13 VID $2370" # VID is displayed
   end
 
+  scenario "visitor can use lower case codes" do
+    calculate("15 img 15 flac 15 vid")
+
+    expect(page).to have_text "15 IMG $1250" # IMG output is displayed
+    expect(page).to have_text "15 FLAC $1957.50" # FLAC is displayed
+    expect(page).to have_text "15 VID $2670" # VID is displayed
+  end
+
 end

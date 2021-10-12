@@ -57,7 +57,7 @@ class Format < ApplicationRecord
     return nil unless input.present?
     requests = {}
     Format.pluck(:code).each do |code|
-      if (index = input.split.index(code)).present?
+      if (index = input.upcase.split.index(code)).present?
         requests[code] = input.split[index-1].to_i
       end
     end
