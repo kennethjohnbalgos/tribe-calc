@@ -48,7 +48,7 @@ Tribe Calculator is a coding challenge that computes the bundle combination for 
   `http://localhost:3000`
   ![](public/calculator_sample.png)
 
-## Future Improvements
+## Extra Features
 
 - Users can register or log in (implemented)
 - Logged in users can save order data (not yet implemented)
@@ -60,11 +60,9 @@ Tribe Calculator is a coding challenge that computes the bundle combination for 
 
 ## Test Coverage
 
-- The tests covers the following:
-  -- Sessions: Login, Registration, and Logout
-  -- Models: Format and Bundles validation
-  -- Features: Calculator Accessiblity and Functionality
-
+- Models: Format and Bundles validation
+- Features: Calculator Accessiblity and Functionality
+- Sessions: Registration, Login and Logout
 - To run the test, trigger it inside the project folder:
   `rspec`
 
@@ -77,4 +75,4 @@ Tribe Calculator is a coding challenge that computes the bundle combination for 
 
 ## License
 
-Tribe:Calc is released under the [MIT License](https://opensource.org/licenses/MIT "(target|_blank)").
+- Tribe:Calc is released under the [MIT License](https://opensource.org/licenses/MIT "(target|_blank)").
