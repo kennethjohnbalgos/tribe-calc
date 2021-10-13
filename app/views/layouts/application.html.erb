@@ -18,7 +18,7 @@
     <%= render 'shared/navbar' %>
     
     <%- container_size = content_for?(:container_size) ? yield(:container_size) : 'col-md-8' %>
-    <div class="bg-light p-5 rounded mx-auto <%= container_size %>">
+    <div class="bg-light p-4 rounded mx-auto <%= container_size %>">
       <%= render 'shared/flash' %>
       <%= yield %>
     </div>
